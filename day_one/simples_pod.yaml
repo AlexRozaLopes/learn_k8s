@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: simples-pod
+  labels:
+    role: simples-pod
+spec:
+  containers:
+    - name: bot
+      image: alexroza/bot-scythe-marie-curie
+      imagePullPolicy: IfNotPresent
+      ports:
+        - containerPort: 8080
+    - name: redis
+      image: redis/redis-stack
+      ports:
+        - containerPort: 6379
+        - containerPort: 8001
+  restartPolicy: Always
